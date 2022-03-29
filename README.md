@@ -1,12 +1,12 @@
-# Template Addon for Vaadin Flow
+# Splide Addon for Vaadin Flow
 
-This project is a template for building new Vaadin Flow addons
+Timeline component uses [Splide](https://github.com/Splidejs/splide) library to display images and videos as a carousel.
 
 This component is part of Vaadin Component Factory
 
 ## Running the component demo
 Run from the command line:
-- `mvn  -pl vcf-template-demo -Pwar install jetty:run`
+- `mvn  -pl vcf-splide-demo -Pwar install jetty:run`
 
 Then navigate to `http://localhost:8080/`
 
@@ -27,7 +27,7 @@ add the following dependency to your `pom.xml`:
 ```
 <dependency>
     <groupId>com.vaadin.componentfactory</groupId>
-    <artifactId>vcf-template</artifactId>
+    <artifactId>vcf-splide</artifactId>
     <version>${component.version}</version>
 </dependency>
 ```
