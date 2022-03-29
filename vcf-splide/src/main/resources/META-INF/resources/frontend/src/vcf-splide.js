@@ -5,6 +5,7 @@ window.vcfsplide = {
 
 	create: function (container) {
 
+		// define main slider
 		var main = new Splide("#main-slider", {
 			type: 'loop',
 			width: '100%',
@@ -13,6 +14,7 @@ window.vcfsplide = {
 			cover: true,			
 		});
 
+		// define thumbnails slider
 		var thumbnails = new Splide("#thumbnails-slider", {
 			fixedWidth: 100,
 			fixedHeight: 60,
@@ -29,51 +31,57 @@ window.vcfsplide = {
 			},			
 		});
 
-		main.options.height = container.clientHeight - thumbnails.options.fixedHeight - 30;
+		// set main slider 
+		main.options = {
+			height: container.clientHeight - thumbnails.options.fixedHeight - 30,
+		};
 
+		// sync the main slider to thumbnails
 		main.sync(thumbnails);
 		main.mount({ Video });
 		thumbnails.mount({ Video });
 
+		// disable video on thumbnail
+		thumbnails.Components.Video.disable(true);
+
+		// create bar for close button on full screen
 		const bar = document.createElement('div');
 		bar.id = "lightbox-bar";
-		bar.style.width = '95%';
-		bar.style.height = '20px';
+		bar.style.height = '10px';
 		bar.style.display = 'none';
+		bar.style.paddingRight = '0.5em';
+		bar.style.paddingTop = '1em';
 		bar.innerHTML = "<span class='lightbox_close'>&times;</span>";
 		container.insertBefore(bar, document.querySelector('#main-slider'));
 
+		// save main slider & thumbnails slider values on container
 		container.main = main;
 		container.thumbnails = thumbnails;			
 	},
 
 	showLightbox: function (container) {
-
+		// save original height and width values of the component
 		const containerOriginalHeight = container.style.height;
-		const containerOriginalWidth = container.style.width;
+		const containerOriginalWidth = container.style.width;		
 
+		// set new class and height and width values for full screen
 		container.classList.add('lightbox');
 		container.style.height = '100%';
 		container.style.width = '100%';
 		
-		const bar = document.querySelector('#lightbox-bar');
-		bar.style.display = 'block';	
+		// save original main slider height
+		const mainOriginalHeight = container.main.options.height;
 		
-		var mainOriginalHeight = container.main.options.height;
-		var mainOriginalWidth = container.main.options.width;
+		// show close button bar div
+		const bar = document.querySelector('#lightbox-bar');
+		bar.style.display = 'block';			
 
-		var thumbnailsOriginalWidth = container.thumbnails.options.width;
-
+		// set full screen height for the main slider
 		container.main.options = {
 			height: '80vh',
-			width: '95vw',
 		};
-
-		container.thumbnails.options = {
-			width: '95vw',
-		}
-		const btnClose = document.querySelector('.lightbox_close');
-
+		
+		// define behavior on full screen close button click
 		const closeLightbox = () => {
             bar.style.display = "none";
 			container.style.height = containerOriginalHeight;
@@ -81,14 +89,13 @@ window.vcfsplide = {
             container.classList.remove('lightbox');
 			container.main.options = {
 				height: mainOriginalHeight,
-				width: mainOriginalWidth,
 			};
-			container.thumbnails.options = {
-				width: thumbnailsOriginalWidth,
-			}
         };
+
+		// add listener to close button	
+		const btnClose = document.querySelector('.lightbox_close');	
 		btnClose.addEventListener("click", () => {
             closeLightbox();
-        });		
+        });	
 	},
 }
