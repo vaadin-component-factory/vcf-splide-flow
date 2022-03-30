@@ -1,5 +1,8 @@
 package com.vaadin.componentfactory.addons.splide;
 
+/**
+ * Representation of a slide.
+ */
 public class Slide {
 
  private String src;
