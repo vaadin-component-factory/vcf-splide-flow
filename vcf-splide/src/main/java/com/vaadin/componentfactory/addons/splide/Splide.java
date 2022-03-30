@@ -47,7 +47,7 @@ public class Splide extends Div {
   
   private Element createSlidesDom(List<Slide> slides) {       
     Element slidesDiv = ElementFactory.createDiv();
-    slidesDiv.setAttribute("id", "main-slider");
+    slidesDiv.setAttribute("id", "main-slider-" + this.getId().get());
     slidesDiv.getClassList().add("splide");
     
     Element divTrack = ElementFactory.createDiv();
@@ -82,7 +82,7 @@ public class Splide extends Div {
   
   private Element createThumbnailsDom(List<Slide> slides) {  
     Element thumbnailsDiv = ElementFactory.createDiv();
-    thumbnailsDiv.setAttribute("id", "thumbnails-slider");
+    thumbnailsDiv.setAttribute("id", "thumbnails-slider-" + this.getId().get());
     thumbnailsDiv.getClassList().add("splide");
     
     Element divTrack = ElementFactory.createDiv();

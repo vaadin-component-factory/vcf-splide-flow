@@ -1,24 +1,24 @@
-.vcfsplide #main-slider {
+.vcfsplide [id^="main-slider"] {
 	padding: 1rem 2rem;
 }
 
-.vcfsplide #thumbnails-slider #thumbnails-track {
+.vcfsplide [id^="thumbnails-slider"] #thumbnails-track {
 	margin: 0 2rem;
 }
 
-.vcfsplide #thumbnails-slider .splide__arrow--prev {
+.vcfsplide [id^="thumbnails-slider"] .splide__arrow--prev {
 	left: -0.5em;
 }
 
-.vcfsplide #thumbnails-slider .splide__arrow--next {
+.vcfsplide [id^="thumbnails-slider"] .splide__arrow--next {
 	right: -0.5em;
 }
 
-.vcfsplide.lightbox #thumbnails-slider .splide__arrow--prev {
+.vcfsplide.lightbox [id^="thumbnails-slider"] .splide__arrow--prev {
 	left: 0;
 }
 
-.vcfsplide.lightbox #thumbnails-slider .splide__arrow--next {
+.vcfsplide.lightbox [id^="thumbnails-slider"] .splide__arrow--next {
 	right: 0;
 }
 

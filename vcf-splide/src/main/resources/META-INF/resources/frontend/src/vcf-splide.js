@@ -4,9 +4,8 @@ import { Video } from '@splidejs/splide-extension-video';
 window.vcfsplide = {
 
 	create: function (container) {
-
 		// define main slider
-		var main = new Splide("#main-slider", {
+		var main = new Splide("#main-slider-" + container.id, {
 			type: 'loop',
 			width: '100%',
 			pagination: false,
@@ -15,7 +14,7 @@ window.vcfsplide = {
 		});
 
 		// define thumbnails slider
-		var thumbnails = new Splide("#thumbnails-slider", {
+		var thumbnails = new Splide("#thumbnails-slider-" + container.id, {
 			fixedWidth: 100,
 			fixedHeight: 60,
 			gap: 10,
@@ -46,17 +45,18 @@ window.vcfsplide = {
 
 		// create bar for close button on full screen
 		const bar = document.createElement('div');
-		bar.id = "lightbox-bar";
+		bar.id = "lightbox-bar-" + container.id;
 		bar.style.height = '10px';
 		bar.style.display = 'none';
 		bar.style.paddingRight = '0.5em';
 		bar.style.paddingTop = '1em';
 		bar.innerHTML = "<span class='lightbox_close'>&times;</span>";
-		container.insertBefore(bar, document.querySelector('#main-slider'));
+		container.prepend(bar);
 
 		// save main slider & thumbnails slider values on container
 		container.main = main;
 		container.thumbnails = thumbnails;			
+		container.bar = bar;
 	},
 
 	showLightbox: function (container) {
@@ -73,7 +73,7 @@ window.vcfsplide = {
 		const mainOriginalHeight = container.main.options.height;
 		
 		// show close button bar div
-		const bar = document.querySelector('#lightbox-bar');
+		const bar = document.getElementById(container.bar.id);
 		bar.style.display = 'block';			
 
 		// set full screen height for the main slider
@@ -93,7 +93,7 @@ window.vcfsplide = {
         };
 
 		// add listener to close button	
-		const btnClose = document.querySelector('.lightbox_close');	
+		const btnClose = bar.querySelector('.lightbox_close');	
 		btnClose.addEventListener("click", () => {
             closeLightbox();
         });	
