@@ -1,8 +1,11 @@
 # Splide Addon for Vaadin Flow
 
-Timeline component uses [Splide](https://github.com/Splidejs/splide) library to display images and videos as a carousel.
+Vaadin component that uses [Splide](https://github.com/Splidejs/splide) library to display images and videos as a carousel.
 
-This component is part of Vaadin Component Factory
+This component is part of Vaadin Component Factory.
+
+## Description
+Splide component allows to create a carousel/slider to display images and videos (youtube, vimeo or html) including a thumbnail control and full screen functionality.
 
 ## Running the component demo
 Run from the command line:
@@ -14,13 +17,6 @@ Then navigate to `http://localhost:8080/`
 Run from the command line:
 - `mvn clean install -DskipTests`
 
-## Profiles
-### Profile "directory"
-This profile, when enabled, will create the zip file for uploading to Vaadin's directory
-
-### Profile "production"
-This profile, when enabled, will execute a production build for the demo
-
 ## Using the component in a Flow application
 To use the component in an application using maven,
 add the following dependency to your `pom.xml`:
@@ -31,6 +27,13 @@ add the following dependency to your `pom.xml`:
     <version>${component.version}</version>
 </dependency>
 ```
+## Examples
+
+See examples on [splide-demo](https://github.com/vaadin-component-factory/vcf-splide-flow/tree/main/vcf-splide-demo/src/main/java/com/vaadin/componentfactory/demo).
+
+## Missing features or bugs
+
+You can report any issue or missing feature on [GitHub](https://github.com/vaadin-component-factory/vcf-splide-flow/issues).
 
 ## Flow documentation
 Documentation for flow can be found in [Flow documentation](https://vaadin.com/docs/v14/flow/overview).
