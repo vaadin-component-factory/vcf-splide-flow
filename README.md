@@ -1,6 +1,6 @@
 # Splide Addon for Vaadin Flow
 
-Timeline component uses [Splide](https://github.com/Splidejs/splide) library to display images and videos as a carousel.
+Vaadin component that uses [Splide](https://github.com/Splidejs/splide) library to display images and videos as a carousel.
 
 This component is part of Vaadin Component Factory.
 
