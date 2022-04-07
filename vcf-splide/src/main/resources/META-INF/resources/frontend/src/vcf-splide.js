@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Timeline
+ * Splide
  * %%
  * Copyright (C) 2022 Vaadin Ltd
  * %%
