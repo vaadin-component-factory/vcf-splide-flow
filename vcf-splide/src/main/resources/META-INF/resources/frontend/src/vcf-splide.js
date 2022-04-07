@@ -117,4 +117,9 @@ window.vcfsplide = {
             closeLightbox();
         });	
 	},
+
+	addSlide: function(container, newSlide){
+		container.main.add(newSlide);
+		container.thumbnails.add(newSlide);
+	}
 }
