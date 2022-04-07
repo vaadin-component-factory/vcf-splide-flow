@@ -20,6 +20,7 @@
 package com.vaadin.componentfactory.addons.splide;
 
 import com.vaadin.flow.component.AttachEvent;
+import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
@@ -60,6 +61,12 @@ public class Splide extends Div {
   protected void onAttach(AttachEvent attachEvent) {
     super.onAttach(attachEvent);  
     createSlider(slides);
+  }
+  
+  @Override
+  protected void onDetach(DetachEvent detachEvent) {
+    super.onDetach(detachEvent);
+    this.getElement().removeAllChildren();
   }
   
   private void createSlider(List<Slide> slides) {
