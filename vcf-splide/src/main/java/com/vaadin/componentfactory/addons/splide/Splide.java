@@ -103,8 +103,8 @@ public class Splide extends Div {
         ulList.appendChild(liSlide.getElement());  
       } else {
         VideoSlide videoSlide = (VideoSlide)slide;
-        Element liSlide = createVideoItem(videoSlide);
-        ulList.appendChild(liSlide);  
+        ListItem liSlide = createVideoItem(videoSlide);
+        ulList.appendChild(liSlide.getElement());  
       }  
     }
     return slidesDiv;
@@ -134,8 +134,8 @@ public class Splide extends Div {
         ulList.appendChild(liSlide.getElement());        
       } else {
         VideoSlide videoSlide = (VideoSlide)slide;
-        Element liSlide = createVideoItem(videoSlide);
-        ulList.appendChild(liSlide);           
+        ListItem liSlide = createVideoItem(videoSlide);
+        ulList.appendChild(liSlide.getElement());           
       }
     }        
     return thumbnailsDiv;
@@ -150,19 +150,19 @@ public class Splide extends Div {
     return imageItem;
   }
   
-  private Element createVideoItem(VideoSlide videoSlide) {
-    Element videoItem = ElementFactory.createListItem();
-    videoItem.getClassList().add("splide__slide");
+  private ListItem createVideoItem(VideoSlide videoSlide) {
+    ListItem videoItem = new ListItem();
+    videoItem.setClassName("splide__slide");
     
     switch (videoSlide.getType()) {
       case YOUTUBE:
-        videoItem.setAttribute("data-splide-youtube", videoSlide.getUrl()); 
+        videoItem.getElement().setAttribute("data-splide-youtube", videoSlide.getUrl()); 
         break;
       case VIMEO:
-        videoItem.setAttribute("data-splide-vimeo", videoSlide.getUrl()); 
+        videoItem.getElement().setAttribute("data-splide-vimeo", videoSlide.getUrl()); 
         break;
       case HTML:
-        videoItem.setAttribute("data-splide-html-video", videoSlide.getUrl()); 
+        videoItem.getElement().setAttribute("data-splide-html-video", videoSlide.getUrl()); 
         break;        
       default:
         break;
@@ -171,18 +171,48 @@ public class Splide extends Div {
     if(StringUtils.isNotBlank(videoSlide.getSrc())) {
       Image image = new Image();
       image.setSrc(videoSlide.getSrc());      
-      videoItem.appendChild(image.getElement());
-    }
-    
+      videoItem.add(image);
+    }    
     return videoItem;
   }
   
+  /**
+   * Return the list of slides that are currently part of the splide component.
+   * 
+   * @return the list of the slides
+   */
   public List<Slide> getSlides() {
     return slides;
   }
 
+  /**
+   * Set the list of the slides to be displayed by the splide component.
+   * 
+   * @param slides the list of slides to display
+   */
   public void setSlides(List<Slide> slides) {
-    this.slides = slides;
+    this.slides = new ArrayList<>(slides);
+    if(this.isAttached()) {
+      for(Slide slide : slides) {
+        addSlideElement(slide);
+      }
+    }
   }
-   
+  
+  /**
+   * Add a new slide to the splide carousel.
+   * 
+   * @param slide the new slide to add
+   */
+  public void addSlide(Slide slide) {
+    if(this.isAttached()) {         
+      this.addSlideElement(slide); 
+    } 
+    this.slides.add(slide);    
+  }
+  
+  private void addSlideElement(Slide slide) {
+    ListItem liSlide = slide instanceof ImageSlide ? createImageItem((ImageSlide)slide) : createVideoItem((VideoSlide)slide);
+    this.getElement().executeJs("vcfsplide.addSlide($0,$1)", this, liSlide.getElement().toString()); 
+  }
 }
