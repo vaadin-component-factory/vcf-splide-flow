@@ -191,12 +191,13 @@ public class Splide extends Div {
    * @param slides the list of slides to display
    */
   public void setSlides(List<Slide> slides) {
-    this.slides = new ArrayList<>(slides);
     if(this.isAttached()) {
+      this.clearSlides();
       for(Slide slide : slides) {
         addSlideElement(slide);
       }
-    }
+    }    
+    this.slides = new ArrayList<>(slides);
   }
   
   /**
@@ -214,5 +215,15 @@ public class Splide extends Div {
   private void addSlideElement(Slide slide) {
     ListItem liSlide = slide instanceof ImageSlide ? createImageItem((ImageSlide)slide) : createVideoItem((VideoSlide)slide);
     this.getElement().executeJs("vcfsplide.addSlide($0,$1)", this, liSlide.getElement().toString()); 
+  }
+  
+  /**
+   * Remove all current slides present in the carousel.
+   */
+  public void clearSlides() {
+    if(isAttached()) {
+      this.getElement().executeJs("vcfsplide.clearSlides($0)", this);
+    }
+    this.slides.clear();
   }
 }
