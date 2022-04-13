@@ -1,6 +1,6 @@
 /*-
  * #%L
- * Timeline
+ * Splide
  * %%
  * Copyright (C) 2022 Vaadin Ltd
  * %%
@@ -117,4 +117,15 @@ window.vcfsplide = {
             closeLightbox();
         });	
 	},
+
+	addSlide: function(container, newSlide) {
+		container.main.add(newSlide);
+		container.thumbnails.add(newSlide);
+	},
+
+	clearSlides: function(container) {
+		const slidesLength = container.main.length;	
+		container.main.remove(Slide => Slide.index < slidesLength);			
+		container.thumbnails.remove(Slide => Slide.index < slidesLength);
+	}
 }
