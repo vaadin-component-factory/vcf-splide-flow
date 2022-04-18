@@ -109,6 +109,7 @@ window.vcfsplide = {
 			container.main.options = {
 				height: mainOriginalHeight,
 			};
+			container.$server.onCloseFullScreenMode();
         };
 
 		// add listener to close button	
