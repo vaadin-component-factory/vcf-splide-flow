@@ -29,6 +29,7 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.dom.ElementFactory;
+import elemental.json.JsonValue;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
@@ -96,10 +97,18 @@ public class Splide extends Div {
       
       if(slide instanceof ImageSlide) {
         ImageSlide imageSlide = (ImageSlide)slide;        
-        ListItem liSlide = createImageItem(imageSlide);
-        liSlide.addClickListener(e -> {
-          this.getElement().executeJs("vcfsplide.showLightbox($0)", this);
-        });
+        ListItem liSlide = createImageItem(imageSlide);      
+        liSlide.getElement().addEventListener(
+          "click",
+          e -> {
+              JsonValue detail = e.getEventData().get("event.detail");
+              if (detail.asNumber() > 1) {
+                  // double click, do nothing, just ignore
+              } else {
+                this.getElement().executeJs("vcfsplide.showLightbox($0)", this);
+              }
+          }
+        ).addEventData("event.detail");
         ulList.appendChild(liSlide.getElement());  
       } else {
         VideoSlide videoSlide = (VideoSlide)slide;
