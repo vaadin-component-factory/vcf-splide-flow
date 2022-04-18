@@ -39,7 +39,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 @NpmPackage(value = "@splidejs/splide", version = "3.6.12")
 @NpmPackage(value = "@splidejs/splide-extension-video", version = "0.6.8")
-@JsModule("src/vcf-splide.js")
+@JsModule("./src/vcf-splide.js")
 @CssImport("@splidejs/splide/dist/css/splide.min.css")
 @CssImport("@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css")
 @CssImport("./styles/splide.css")
