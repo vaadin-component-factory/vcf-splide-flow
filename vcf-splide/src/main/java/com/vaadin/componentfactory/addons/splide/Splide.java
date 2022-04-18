@@ -19,7 +19,11 @@
  */
 package com.vaadin.componentfactory.addons.splide;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import com.vaadin.flow.component.AttachEvent;
+import com.vaadin.flow.component.ClientCallable;
 import com.vaadin.flow.component.DetachEvent;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
@@ -30,9 +34,6 @@ import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.dom.ElementFactory;
 import elemental.json.JsonValue;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * Splide component definition. Splide uses splide library to display images and videos as a
@@ -47,6 +48,8 @@ import org.apache.commons.lang3.StringUtils;
 public class Splide extends Div {
   
   private List<Slide> slides = new ArrayList<>();
+  
+  private boolean fullScreen = false;
     
   public Splide() {
     this.setId(String.valueOf(this.hashCode()));
@@ -102,10 +105,10 @@ public class Splide extends Div {
           "click",
           e -> {
               JsonValue detail = e.getEventData().get("event.detail");
-              if (detail.asNumber() > 1) {
-                  // double click, do nothing, just ignore
+              if (detail.asNumber() > 1 || fullScreen) {
+                  // do nothing, just ignore
               } else {
-                this.getElement().executeJs("vcfsplide.showLightbox($0)", this);
+                this.displayFullScreenMode();
               }
           }
         ).addEventData("event.detail");
@@ -117,6 +120,16 @@ public class Splide extends Div {
       }  
     }
     return slidesDiv;
+  }
+  
+  private void displayFullScreenMode() {
+    this.getElement().executeJs("vcfsplide.showLightbox($0)", this);
+    this.fullScreen = true;
+  }
+  
+  @ClientCallable
+  private void onCloseFullScreenMode() {
+    this.fullScreen = false;
   }
   
   private Element createThumbnailsDom(List<Slide> slides) {  
