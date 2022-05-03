@@ -97,7 +97,7 @@ window.vcfsplide = {
 
 		// set full screen height for the main slider
 		container.main.options = {
-			height: '80vh',
+			height: container.clientHeight - container.thumbnails.options.fixedHeight - bar.clientHeight - 50,
 		};
 		
 		// define behavior on full screen close button click

@@ -22,6 +22,10 @@
 	right: 0;
 }
 
+.vcfsplide.lightbox [id^="main-slider"] {
+  background-size: contain !important;
+}
+
 .lightbox {
   position: fixed; 
   z-index: 1000; 
