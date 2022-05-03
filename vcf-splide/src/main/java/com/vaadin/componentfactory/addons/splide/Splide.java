@@ -56,7 +56,7 @@ public class Splide extends Div {
     setClassName("vcfsplide");
   }
   
-  public Splide(List<Slide> slides) {
+  public Splide(List<? extends Slide> slides) {
     this();
     this.slides = new ArrayList<>(slides);
   }
