@@ -9,7 +9,7 @@
     <packaging>war</packaging>
     <name>Splide Addon Demo</name>
 
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <inceptionYear>2022</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
