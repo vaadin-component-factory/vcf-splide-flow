@@ -50,6 +50,8 @@ public class Splide extends Div {
   private List<Slide> slides = new ArrayList<>();
   
   private boolean fullScreen = false;
+ 
+  private boolean imageTrueSize = true;
     
   public Splide() {
     this.setId(String.valueOf(this.hashCode()));
@@ -64,7 +66,8 @@ public class Splide extends Div {
   @Override
   protected void onAttach(AttachEvent attachEvent) {
     super.onAttach(attachEvent);  
-    createSlider(slides);
+    createSlider(slides);  
+    setImageTrueSize(imageTrueSize);
   }
   
   @Override
@@ -247,5 +250,32 @@ public class Splide extends Div {
       this.getElement().executeJs("vcfsplide.clearSlides($0)", this);
     }
     this.slides.clear();
+  }
+  
+  /**
+   * Returns if the images are being cropped or not.
+   * 
+   * By default, this flag is set to true.
+   * 
+   * @return true, if images are shown in true size.
+   */
+  public boolean isImageTrueSize() {
+    return imageTrueSize;
+  }
+
+  /**
+   * Slide images usually have different aspect ratios. We can tell the component to show them in
+   * true size or to crop them so they all have the same size to fit container. If this flag is set
+   * true, images will be shown in true size, if not, images will be cropped.
+   * 
+   * @param imageTrueSize
+   */
+  public void setImageTrueSize(boolean imageTrueSize) {
+    this.imageTrueSize = imageTrueSize;
+    if(imageTrueSize) {
+      this.addClassName("true-size");
+    } else {
+      this.removeClassName("true-size");
+    }
   }
 }
