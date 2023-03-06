@@ -21,8 +21,12 @@ import Splide from '@splidejs/splide';
 import { Video } from '@splidejs/splide-extension-video';
 
 window.vcfsplide = {
+	
+	create: function(container) {
+        setTimeout(() => this._createSlider(container));
+    },
 
-	create: function (container) {
+	_createSlider: function (container) {
 		// define main slider
 		var main = new Splide("#main-slider-" + container.id, {
 			type: 'loop',
