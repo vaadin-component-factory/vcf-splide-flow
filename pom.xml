@@ -6,7 +6,7 @@
 
     <groupId>com.vaadin.componentfactory</groupId>
     <artifactId>vcf-splide-parent</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
     <name>Splide Addon Parent</name>
 
