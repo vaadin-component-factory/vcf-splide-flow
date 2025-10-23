@@ -22,6 +22,8 @@ package com.vaadin.componentfactory.addons.splide;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
+import tools.jackson.databind.JsonNode;
+
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.ClientCallable;
 import com.vaadin.flow.component.DetachEvent;
@@ -33,7 +35,6 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.dom.ElementFactory;
-import elemental.json.JsonValue;
 
 /**
  * Splide component definition. Splide uses splide library to display images and videos as a
@@ -107,8 +108,8 @@ public class Splide extends Div {
         liSlide.getElement().addEventListener(
           "click",
           e -> {
-              JsonValue detail = e.getEventData().get("event.detail");
-              if (detail.asNumber() > 1 || fullScreen) {
+              JsonNode detail = e.getEventData().get("event.detail");
+              if (detail.asInt() > 1 || fullScreen) {
                   // do nothing, just ignore
               } else {
                 this.displayFullScreenMode();

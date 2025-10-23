@@ -18,10 +18,10 @@
     </organization>
 
     <properties>
-        <vaadin.version>14.7.8</vaadin.version>
-        <flow.version>2.7.6</flow.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <vaadin.version>25.0.0-beta1</vaadin.version>
+        <jakarta.servlet.api.version>5.0.0</jakarta.servlet.api.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>flow-test-generic</artifactId>
-            <version>${flow.version}</version>
+            <version>${vaadin.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -61,11 +61,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.0.1</version>
-		    <scope>provided</scope>
-		</dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
