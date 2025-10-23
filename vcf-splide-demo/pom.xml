@@ -17,12 +17,11 @@
     </organization>
 
     <properties>
-        <vaadin.version>14.7.8</vaadin.version>
-        <flow.version>2.7.6</flow.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <vaadin.version>25.0.0-beta1</vaadin.version>
+        <jetty.plugin.version>12.1.2</jetty.plugin.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
     <dependencyManagement>
@@ -57,13 +56,6 @@
 			<groupId>org.vaadin.addons.componentfactory</groupId>
 			<artifactId>vcf-splide</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        
-        <!-- demo specific -->
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>flow-component-demo-helpers</artifactId>
-            <version>${flow.version}</version>
         </dependency>
 
         <!-- externals -->
@@ -100,14 +92,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
             <!-- We use jetty plugin, replace it with your favourite developing servlet container -->
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.43.v20210629</version>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-maven-plugin</artifactId>
+                <version>${jetty.plugin.version}</version>
                 <configuration>
-                    <scanIntervalSeconds>1</scanIntervalSeconds>
+                    <scan>5</scan>
                 </configuration>
             </plugin>
             <!--

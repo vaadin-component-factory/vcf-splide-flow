@@ -4,22 +4,27 @@ import com.vaadin.componentfactory.addons.splide.ImageSlide;
 import com.vaadin.componentfactory.addons.splide.Splide;
 import com.vaadin.componentfactory.addons.splide.VideoSlide;
 import com.vaadin.componentfactory.addons.splide.VideoType;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.dependency.StyleSheet;
+import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.Lumo;
+
 import java.util.Arrays;
 
 /**
  * View for {@link Splide} demo.
  */
 @Route("")
-public class SplideDemoView extends DemoView {
+@StyleSheet(Lumo.STYLESHEET)
+public class SplideDemoView extends Div {
 
-  @Override
-  public void initView() {
-    createImageSliderDemo();
-    createImageAndVideoSliderDemo();
-  }
+    public SplideDemoView() {
+      createImageSliderDemo();
+      createImageAndVideoSliderDemo();
+    }
 
   private void createImageSliderDemo() {
 
@@ -27,7 +32,7 @@ public class SplideDemoView extends DemoView {
     // source-example-heading: Images slider demo
     ImageSlide slide1 = new ImageSlide("images/slide_1.jpg");
     ImageSlide slide2 = new ImageSlide("images/slide_2.png");
-    ImageSlide slide3 = new ImageSlide("https://source.unsplash.com/random/1000x1000?sig=3");
+    ImageSlide slide3 = new ImageSlide("https://picsum.photos/1000/1000");
 
     Splide slider = new Splide(Arrays.asList(slide1, slide2, slide3));
     slider.setId("images-slider-demo");
@@ -71,6 +76,20 @@ public class SplideDemoView extends DemoView {
     // end-source-example
 
     addCard("Images and videos slider demo", sliderLayoutContainer);
+  }
+
+  private void addCard(String title, Component content) {
+    H2 cardTitle = new H2(title);
+
+    Div card = new Div();
+    card.getStyle().setMargin("40px auto");
+    card.getStyle().setMaxWidth("1000px");
+    card.getStyle().setMaxWidth("1000px");
+
+    card.add(cardTitle);
+    card.add(content);
+
+    add(card);
   }
 
 }
