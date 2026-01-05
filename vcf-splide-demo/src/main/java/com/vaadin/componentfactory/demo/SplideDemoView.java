@@ -32,7 +32,7 @@ public class SplideDemoView extends Div {
     // source-example-heading: Images slider demo
     ImageSlide slide1 = new ImageSlide("images/slide_1.jpg");
     ImageSlide slide2 = new ImageSlide("images/slide_2.png");
-    ImageSlide slide3 = new ImageSlide("https://picsum.photos/1000/1000");
+    ImageSlide slide3 = new ImageSlide("https://picsum.photos/1920/1080");
 
     Splide slider = new Splide(Arrays.asList(slide1, slide2, slide3));
     slider.setId("images-slider-demo");
@@ -59,7 +59,7 @@ public class SplideDemoView extends Div {
     ImageSlide slide1 = new ImageSlide("images/slide_1.png");
     ImageSlide slide2 = new ImageSlide("images/slide_2.png");
     ImageSlide slide3 = new ImageSlide("images/slide_3.png");
-    VideoSlide slide4 = new VideoSlide("https://www.youtube.com/watch?v=C78LjVQhejI",
+    VideoSlide slide4 = new VideoSlide("https://www.youtube.com/watch?v=48Db4i5yJQw",
         VideoType.YOUTUBE, "images/slide_4.png");
     ImageSlide slide5 = new ImageSlide("images/slide_5.png");
     ImageSlide slide6 = new ImageSlide("images/slide_6.png");
