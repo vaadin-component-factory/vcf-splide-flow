@@ -18,7 +18,7 @@
     </organization>
 
     <properties>
-        <vaadin.version>25.0.0-beta1</vaadin.version>
+        <vaadin.version>25.0.0</vaadin.version>
         <jakarta.servlet.api.version>5.0.0</jakarta.servlet.api.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
