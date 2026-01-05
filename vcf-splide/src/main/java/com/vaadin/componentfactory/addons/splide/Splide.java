@@ -21,7 +21,7 @@ package com.vaadin.componentfactory.addons.splide;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
+import org.jsoup.internal.StringUtil;
 import tools.jackson.databind.JsonNode;
 
 import com.vaadin.flow.component.AttachEvent;
@@ -194,7 +194,7 @@ public class Splide extends Div {
         break;
     }        
      
-    if(StringUtils.isNotBlank(videoSlide.getSrc())) {
+    if(!StringUtil.isBlank(videoSlide.getSrc())) {
       Image image = new Image();
       image.setSrc(videoSlide.getSrc());      
       videoItem.add(image);
