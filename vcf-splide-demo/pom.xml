@@ -50,6 +50,12 @@
             <groupId>com.vaadin</groupId>
             <artifactId>flow-html-components</artifactId>
         </dependency>
+        
+        <dependency>
+           <groupId>com.vaadin</groupId>
+           <artifactId>vaadin-dev</artifactId>
+           <optional>true</optional>
+        </dependency>
 
         <!-- Component -->
         <dependency>
