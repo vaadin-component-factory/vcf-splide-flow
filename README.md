@@ -7,6 +7,10 @@ This component is part of Vaadin Component Factory.
 ## Description
 Splide component allows to create a carousel/slider to display images and videos (youtube, vimeo or html) including a thumbnail control and full screen functionality.
 
+## Compatibility
+- Version 1.x.x supports Vaadin 14-24
+- Version 2.x.x supports Vaadin 25
+
 ## Running the component demo
 Run from the command line:
 - `mvn  -pl vcf-splide-demo -Pwar install jetty:run`
@@ -27,17 +31,19 @@ add the following dependency to your `pom.xml`:
     <version>${component.version}</version>
 </dependency>
 ```
-## Examples
 
+## Examples
 See examples on [splide-demo](https://github.com/vaadin-component-factory/vcf-splide-flow/tree/main/vcf-splide-demo/src/main/java/com/vaadin/componentfactory/demo).
 
-## Missing features or bugs
+## Demo online
+You can check the demo here: https://vcf-demos.org/splide
 
+## Missing features or bugs
 You can report any issue or missing feature on [GitHub](https://github.com/vaadin-component-factory/vcf-splide-flow/issues).
 
-## Flow documentation
-Documentation for flow can be found in [Flow documentation](https://vaadin.com/docs/v14/flow/overview).
-
 ## License
+Distributed under Apache Licence 2.0.
 
-Apache Licence 2
+### Sponsored development
+Major pieces of development of this add-on has been sponsored by multiple customers of Vaadin. Read more about Expert on Demand at: [Support](https://vaadin.com/support) and [Pricing](https://vaadin.com/pricing).
+
